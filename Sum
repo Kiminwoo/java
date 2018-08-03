@@ -1,0 +1,31 @@
+# java
+
+package day04;
+public class Exam08_02_2 {
+	public static void main(String[] args) 
+	{
+		int Sum = 0 ; // 합계를 담아줄 Sum 변수 
+		int a = 1 ;   // 증가값 
+		int Time = 0; // Count 변수 
+		
+		while(Sum<=100)  // 합이 100이 되었을 때 까지 
+		{
+			if(a % 2 ==1)  // 홀수 일 때 
+			{
+				Sum += a;
+				a ++ ;
+				Time ++;
+				
+			}
+			
+			else if ( a % 2 == 0) // 짝수일때
+			{
+				Sum += -a;
+				a ++;
+				Time ++;
+			}
+			
+		}
+		System.out.println(Time); // Count 출력 
+	}
+}
