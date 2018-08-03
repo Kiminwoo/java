@@ -1,0 +1,44 @@
+# java
+
+package day03;
+
+public class Equals {
+
+	public static void main(String[] args) {
+
+		//  == : 기본형 비교 
+		//  equals(): 객체 비교
+		//  instanceof : type 비교
+
+		char c = 'q';
+
+		boolean b = c == 'q' || c == 'Q';
+
+		System.out.println(b);
+
+		String s = new String("Yes");
+		
+		
+		boolean e = s.toLowerCase().equals("yes".toLowerCase()); // 소문자 or 대문자로 통일 시키기 . 비교할 대상과 비교하는 대상 둘에다가 toLowerCase()를 취해 줘야 정확한 결과 값이 나올 수 있다.  
+				
+		System.out.println(e);
+
+		System.out.println("--------------------");
+		String msg1 = new String("hello ~~~");
+		String msg2 = new String("hello ~~~");
+
+		System.out.println(msg1 == msg2); // 각각의 객체가 가르키는 주소값이 같니 ?? --> false 이다 . 
+		System.out.println(msg1.equals(msg2)); // 각각의 객체가 가르키는 값이 같니 ?? -- > true 이다 .
+		System.out.println(msg2.equals(msg1)); // 각각의 객체가 가르키는 값이 같니 ??  --> true 이다 .
+
+		
+		String msg3 = msg2;
+		System.out.println(msg3 == msg2);
+		System.out.println(msg3.equals(msg2));
+		
+		
+		
+	}
+
+}
+
