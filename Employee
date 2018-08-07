@@ -1,0 +1,58 @@
+# java
+package day07;
+
+public class Employee {
+	private String name;
+	private String dept;
+	private String ssn; // 123456-1234567 , 성별 , 나이 , 생년 월일 , 외국인 여부
+	private boolean man;
+
+	public Employee() { // 기본생성자 // source --> generate Constructor Using fields--> 다 해제 하면 됨
+
+	}
+
+	public Employee(String name, String dept, boolean man) {
+
+			this(name,dept,null,man); // 오버로딩 , 다음 줄에 있는  Employee를 불러올때 this
+	}
+
+	public Employee(String name, String dept, String ssn, boolean man) { // source --> generate Constructor Using fields
+		this.name = name;
+		this.dept = dept;
+		this.ssn = ssn;
+		this.man = man;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDept() {
+		return dept;
+	}
+
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+
+	public boolean isMan() { // 너 남자니 ? true = 남자 , false = 여자
+		return man;
+	}
+
+	public void setMan(boolean man) {
+		this.man = man;
+	}
+
+}
