@@ -1,0 +1,71 @@
+# javapackage day07;
+/**
+ * 
+ * @author 김인우
+ * @since 2018.08.07
+ * 
+ *
+ */
+public class Account {
+	private String number; // 계좌
+	private String name; // 이름
+	private int money; // 금액
+						// public : 누구나 접근 가능해 , import 쓰면 누구나 접근 가능해 , 다른 곳에서도 사용해서 할 수 있어.
+	/**
+	 * 
+	 * @param money
+	 *            : 잔고
+	 *
+	 */
+/*
+	public Account() // 기본 생성자 함수 , 메서드 이름이 class이름과 동일하다.
+	{
+		this("계좌번호에","000" , 0); // first Static 에서만 해당된다 . 상단 맨 위 쪽에만 . 
+		// 리턴 type이 선언되어 있지 않다 .
+		System.out.println("Account() 실행");
+		// 초기화 작업 기술할 수 있다.
+		number = " 계좌번호 예 2018-001 "; // this가 생략된 상태
+		name = " 홍길동 "; // this 가 생략된 상태 
+		money = 0; // this가 생략된 상태
+	}
+*/
+	public Account(String number , String name , int money) 
+	{
+		this.number = number;
+		this.name = name;
+		this.money = money;
+	}
+	
+	
+	
+	
+	public void setMoney(int money) {
+		if (money <= 0) {
+			System.out.println(money + ": 값이 유효하지 않습니다.");
+			return;
+		}
+		this.money = money; // 반환되는 값이 없다 --> return값이 필요 없다
+	}
+	public int getMoney() {
+		return this.money; // money값을 가져온다 .
+	}
+	public void setNumber(String input_Number) {
+		this.number = input_Number;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setName(String input_Name) {
+		this.name = input_Name;
+	}
+	public String getName() {
+		return name;
+	}
+	/**
+	 * 계좌 정보 출력 메소드
+	 */
+	public void Print() // 출력 용도로만 사용할 것이다.
+	{
+		System.out.printf("Account[%s : %s님: (%d원)] %n", number, name, money);
+	}
+}
