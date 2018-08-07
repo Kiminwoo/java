@@ -1,0 +1,34 @@
+# java
+
+package day07;
+public class P306 {
+	public static void main(String[] args) 
+	{
+		
+		Product a  =  new  Product(); 
+		Product a1 = new Product(); 
+		Product a2 = new Product(); 
+		Product a3 = new Product(); 
+		Product a4 = new Product(); 
+		System.out.println(a.serialNum);
+		System.out.println(a1.serialNum);
+		System.out.println(a2.serialNum);
+		System.out.println(a3.serialNum);
+		System.out.println(a4.serialNum);
+		
+		
+		
+	}
+}
+class Product 
+	{
+		// 기본 생성자 생성 ( Produc a = new Product(); ) 
+		static int count;
+		int serialNum;
+		{
+			count ++;
+			serialNum = count;
+		}
+		Product(){
+		}	
+	}
