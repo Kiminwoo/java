@@ -1,0 +1,41 @@
+# javapackage day07;
+
+public class AccountTest {
+
+	public static void main(String[] args) {
+		Account a1 = new Account(); // 객체 생성 , 어떤 모양일지 예측을 해보자 .
+		if(a1.getMoney()>=1000000) 
+		{
+			a1.Print();
+		}		
+		
+		
+		Account a2 = new Account(); // 객체 생성 , 어떤 모양일지 예측을 해보자 .
+		a2.Print();
+		a2.setNumber("2018-001");
+		a2.setName("qwewqe");
+		a2.setMoney (900);
+	
+		a1.Print();
+		
+		Account a3 = new Account("2018-023","qweqwe",4631450); // 객체 생성 , 어떤 모양일지 예측을 해보자 .
+		
+		if(a3.getMoney() >=1000000)  // a3 여기서 가져온 금액이 1000000 이상일 경우 에만 Print()출력하기 
+		{
+			a3.Print();
+		}
+		
+		Account a4 = new Account("2018-055" , "qweqwe",213); // 객체 생성 , 어떤 모양일지 예측을 해보자 .
+									// 각각 올라 갈때 a1,a2,a3,a4
+									// 똑같은 객체에 대한 인스턴스를 만들었기 때문에 결과값이 같을 수 밖에 없다.
+									// 똑같은 생김새를 가진 메서드에 접근을 한다. local variable인 값이 this 를 통해 member 변수에 값을 저장시킨다.
+									
+		
+		a1.Print();
+		a2.Print();
+		a3.Print();
+	
+		
+	}
+
+}
