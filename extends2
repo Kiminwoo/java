@@ -1,0 +1,42 @@
+# java
+package day08;
+public class DogTest {
+	public static void main(String[] args) 
+	{
+		/*
+		// TODO Auto-generated method stub
+		
+		/*Animal a =new Animal();
+		System.out.println(a.kind);
+		a.breath();
+		
+		
+		Dog d = new Dog();
+		//System.out.println(d.super.kind); // Static 이라는 곳에는 super자체를 쓸 수가 없다.
+		System.out.println(d.kind);
+		System.out.println(d.name);
+		d.Print(); 
+		d.breath();
+		
+		Animal d2 = d ;  // Is a 관계와 똑같은 형태인데 다른 모습 
+		
+		*/
+		
+		Dog d =new Dog();
+		System.out.println(((Animal)d).kind); // 동물의 종류
+		System.out.println(d.kind); // 강아지의 종류 
+		// 하위 클래스 --> 부모 클래스로 
+		// Up Casting 
+		
+		Animal d2 = new Dog();
+		System.out.println(d2.kind); // 동물의 종류
+		System.out.println(((Dog)d2).kind); // 강아지 종류
+		// 부모 클래스 --> 하위 클래스로 
+		// Down Casting 
+		
+		
+		
+		
+		
+	}
+}
