@@ -1,0 +1,29 @@
+# java
+package day08;
+
+public class fishTest {
+
+	public static void main(String[] args) {
+
+		Animal d = new Dog("진돗개","쫑쫑");//Is a 관계
+		System.out.println(d instanceof Dog); // 인스턴스 인지 확인여부 
+		
+		if(d instanceof Dog)
+		{
+			((Dog)d).Print();
+		}
+		
+		d.breath();
+		
+		
+		((Dog)d).Print();
+		((Fish)d).print(); // 이 부분은 컴파일이 못잡아 준다 . 현재 상태는 Animal 과 Dog가 있는데 ..
+		Animal f = new Fish("레몬씨"); // 파라미터 한개짜리가 넘어가기 떄문에 그거에 맞는 메서드가 실행될 것이다.
+		((Fish)f).print(); // Animal로써 인스턴스 f를 만들었으니까 Fish로 캐스팅해서 타입을 맟춰준것이다.
+		f.breath(); // 부모 한테 받은 것들이 다 적합할 수는 없다.
+		
+		// 맨 위 상위클래스인 Animal을 잘 다루면 Dog와 Fish의 정보를 한 배열에서 관리할 수 있다. 
+
+	}
+
+}
