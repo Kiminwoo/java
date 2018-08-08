@@ -1,0 +1,27 @@
+# java
+
+package day08;
+public class DogTest2 {
+	public static void main(String[] args) 
+	{
+		/*
+		Animal a = new Animal();
+		System.out.println(a.kind);
+		Animal a1 = new Animal("늑대");
+		System.out.println(a1.kind);
+		// kind 가 변하는 단계를 확인할 수 있다. 
+		
+		*/
+		
+		
+		Dog d = new Dog(); // Default 
+		d.Print();
+		
+		Dog d2 = new Dog("진돗개","쫑쫑"); // Parameter로 
+		d2.Print();
+		
+		Dog d3 = new Dog("진돗개2","진돗개3","진돗개4");
+		d3.Print();
+		
+	}
+}
