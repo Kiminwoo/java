@@ -1,0 +1,46 @@
+# java
+package BookApp;
+public class Book {
+		
+	private String title;
+	private int price;
+	
+	public Book() 
+	{	
+		this("제목없음",0); 
+		// this 는 Book(String title, int priece)에게 이 것좀 해결해줘 라고 맡기는 정도 . 
+		// 중복된 Book() 의 해결을 하기  위해서 this 안에 String 과 int형을 써주기 
+		// this는 first statement에 만 해당된다
+		//this.title="제목없음";
+		//this.price= 0 ;
+		// super이 생략되어 있는 것인데 super도 상위에 위치해야 하기 때문에 생략을 한다 . 없는것이 아니다 . 
+	}
+	
+	public Book(String title, int price) 
+	{
+		// super는 first statement에 만 해당된다 
+		super(); 
+		this.title= title;
+		//this.price= price ;
+		setPrice(price); // SetPrice 메서드 호출 . 
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		if(price<0) 
+			return; // 음수를 다시 그냥 반환해준다 . 
+		this.price = price;
+	}
+	public void Print() 
+	{
+		System.out.printf("Book제목 : %s Book가격 : %d %n ", title, price);
+	}
+}
