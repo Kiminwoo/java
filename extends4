@@ -1,0 +1,26 @@
+# java
+package day08;
+public class Fish extends Animal { // extends 한 순간 다 물려받은 것이다.
+			// if class Fish에서 오류가 난다면 상속받은 Animal에서 기본 생성자를 지웠거나 , default생성자를 안만들었을 경우 
+	String name;
+	
+	public Fish() {
+		super("물고기과");// 직접 선언해 주는 이유는 안해주게 되면 동물의 종류가 선언되기 때문에
+	} 
+	public Fish(String name) { // name에 대한 파라미터값을 만든 것.
+		//super(); 자동 생성이기 때문에 
+		super("물고기과"); // 직접 선언해 주는 이유는 안해주게 되면 동물의 종류가 선언되기 때문에 
+		this.name = name;
+	}
+	public void print() {
+		super.Print();
+		System.out.printf("Fish[%s , %s]%n", super.kind, this.name); // 여기서는 this or super 둘다 가능
+	}
+	//@Override
+	public void breath() //메소드 오버라이딩 규칙 : 상속받은 클래스 내애서 오버라이딩을 할때 접근제한자는 부모의 접근제한자 보다 커야한다.
+	{
+		System.out.println("아가미로 숨쉬기");
+		
+		
+	}
+}
