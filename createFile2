@@ -1,0 +1,29 @@
+# java
+package Practice;
+
+import java.io.*;
+
+public class Exception22 {
+
+	public static void main(String[] args)
+
+	{
+		try {
+			File f = createFile(args[0]);
+			System.out.println(f.getName() + "파일이 성공적으로 생성되었습니다.");
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "다시 입력해 주세요");
+		}
+	}
+
+	static File createFile(String fileName) throws Exception {
+		if (fileName == null || fileName == "")
+
+			throw new Exception("파일 이름을 확인해 주세요.");
+
+		File f = new File(fileName);
+
+		f.createNewFile();
+		return f;
+	}
+}
