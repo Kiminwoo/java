@@ -1,0 +1,55 @@
+# java
+
+package Practice;
+
+public class MyThreadExample implements Runnable{
+	
+	
+	boolean suspended =false;
+	boolean stopped = false;
+	
+	Thread th;
+	
+	MyThreadExample(String name)
+	{
+		th = new Thread(this,name);
+	}
+
+	public void run() 
+	{
+		while(!stopped) 
+		{
+			if(!suspended) 
+			{
+				//작업수행
+				
+				try 
+				{
+					Thread.sleep(1000);
+				}
+				catch(InterruptedException e){}
+				{
+					
+				}
+			}
+		}
+	}
+	public void suspend() 
+	{
+		suspended = true;
+	}
+	public void resume() 
+	{
+		suspended = false;
+	}
+	public void stop() 
+	{
+		stopped = true;
+	}
+	public void start() 
+	{
+		th.start();
+	}
+}
+
+
