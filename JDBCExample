@@ -1,0 +1,59 @@
+# java
+package b_20180821;
+
+import java.sql.*; // 
+
+public class StatInsert {
+
+	public static void main(String[] args) 
+	{
+		String url = "jdbc:oracle:thin:@70.12.115.144:1521:orcl"; //thin방식으로 아이피 : 포트번호 : DB타입
+		String user ="scott";
+		String pass = "tiger";
+ 		try {
+		//1. 드라이버를 메모리 로딩
+		Class.forName("oracle.jdbc.driver.OracleDriver"); // String 값은 양쪽에서 받을 수 있으니까.
+		
+		//2. 연결객체 얻어오기
+		Connection con 
+			= DriverManager.getConnection(url, user, pass);
+		System.out.println("연결성공");
+		
+		//3.sql 문장만들기
+		String name = "홍홍이";
+		String id = "800808-1234567";
+		String tel = "032-555-9874";
+		String sex = "여자";
+		int age = 25;
+		String home = "서울";
+		
+ 		String sql = "INSERT INTO info_tab " +"(name, id, tel, sex, age, home) "
+ 											+"VALUES ('"+name+"','"+id+"','"+tel+"','"+sex+"',"+age+",'"+home+"')";
+ 		
+ 		
+		//String sql = "DELETE FROM info_tab  " + "WHERE name='김길자'";
+ 						
+
+ 		
+ 		System.out.println(sql);
+ 		
+ 		//4.전송객체 가져오기 
+ 		Statement st = con.createStatement();
+ 		
+ 		
+ 		//5. 전송
+ 		st.executeUpdate(sql);
+ 		
+ 		//6. 닫기
+ 		st.close();
+ 		con.close();
+ 		System.out.println("실행성공");
+ 		}
+		catch(Exception ex) 
+		{
+			System.out.println("실패 : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+			
+	}
+}
