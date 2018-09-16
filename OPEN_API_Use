@@ -1,0 +1,39 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+public class Example2 {
+	public static void main(String [] args) 
+	{
+		BufferedReader br = null;
+		try 
+		{
+			String urlstr = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName=%EC%A2%85%EB%A1%9C%EA%B5%AC&dataTerm=month&pageNo=1&numOfRows=10&ServiceKey=oOAJnP%2FmbpEtkXEOu4jK1LzPbACEpO6Iy2zRdBDiUjVWIWNL61sqfioNEiw1ZYguuqls5Fje3UHZvhxyNr4uKQ%3D%3D&ver=1.3";
+			# 위 urlstr에 아까 우리가 사용해본 URI주소를 넣어준다.
+
+			URL url = new URL (urlstr);
+
+			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+			# urlconnection에 연결되는 역할을 ,
+ 
+			urlconnection.setRequestMethod("GET");
+ # GET방식으로 
+
+			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(),"UTF-8"));
+			
+			String result = "";
+			String line;
+			while((line = br.readLine()) != null) 
+			{
+				result = result + line + "\n";
+			}
+			
+			System.out.println(result);
+		}
+		catch(Exception e) 
+		{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+}
