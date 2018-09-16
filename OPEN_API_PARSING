@@ -1,0 +1,102 @@
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+public class ParsingExample {
+	public static void main(String[] args) {
+		
+		// page는 파싱해오는 url을 구분해 주기 위한 것.
+		int page = 1;
+		
+		try {
+			while (true) 
+			{
+				
+				String url = "http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?"
+						+ "ServiceKey=" # 인증키는 자신의 인증키를 넣어서 사용..
+						+ "&strSrch=3"+page;
+				// parsing할 url 지정 ( API 키 포함해서 이다 )
+				
+				// 페이지에 접근해줄 Document 객체를 생성해 주어야 한다.
+				// 여기서 생성한 document 객체를 통해 파싱할 url의 요소를 읽어 들인다.
+				// doc.getDocumentElement().getNodeName()를 출력하면 위 XML의 최상위 tag 값을 가져온다.
+				// 여기서는 ServiceResult 가 최상위 tag값이 될 것이다.
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(url);
+				doc.getDocumentElement().normalize();
+				System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
+				
+				// 여기는 파싱할 정보가 있는 tag에 접근하는 부분이다.
+				// 여기서 파싱할 데이터는 <itemList>라는 tag안에 있기 때문에 나는 여기로 접근해야한다.
+				// 그러면 nList에 <itemList> 태그가 하나씩 담기게 되고 , getLength()를 통해 리스트의 수를 확인할 수 있게된다.
+				
+				NodeList nList = doc.getElementsByTagName("itemList");
+				System.out.println("파싱할 리스트 수 : " + nList.getLength());
+				
+				// 이 부분은 list에 담긴 데이터를 출력하는 부분 
+				// 위에 담긴 list를 반복문을 통해서 출력할 것이다
+				// getTextContent() 는 전체 정보를 의미
+				// getTagValue (" tag " , element ) : 입력한 tag 정보를 의미
+				// getTagValue ( " tag " <- 실질적인 tag의 변수값을 넣어줘야 함 ) 
+				// getTagValue는 따로 메소드를 만들어 준 것
+
+				for (int temp = 0; temp < nList.getLength(); temp++) {
+				
+  // for문을 사용해 준 것은 모든 데이터를 출력해 보기 위해서이다.
+
+					Node nNode = nList.item(temp);
+					
+					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+						
+						Element eElement = (Element) nNode;
+						
+						System.out.println("----------------------------------------");
+						System.out.println("노선 ID      : " + getTagValue("busRouteId", eElement));
+						System.out.println("노선명                : " + getTagValue("busRouteNm", eElement));
+						System.out.println("운수사명             : " + getTagValue("corpNm", eElement));
+						System.out.println("금일첫차시간       : " + getTagValue("firstBusTm", eElement));
+						System.out.println("금일저상첫차시간 : " + getTagValue("firstLowTm", eElement));
+						System.out.println("금일저상막차시간 : " + getTagValue("lastLowTm", eElement));
+						System.out.println("금일막차시간       : " + getTagValue("lastBusTm", eElement));
+						System.out.println("노선 길이 (Km) : " + getTagValue("length", eElement));
+						System.out.println("노선 유형            : " + getTagValue("routeType", eElement));
+						System.out.println("기점                   : " + getTagValue("stStationNm", eElement));
+						System.out.println("종점                   : " + getTagValue("edStationNm", eElement));
+						System.out.println("배차간격 (분)  : " + getTagValue("term", eElement));
+					}
+				
+				
+				
+				
+				}
+				
+				//하나의 리스트 값을 출력하면 +1 을 함으로써 구분시킬려고 , 20번째까지 구하기 위해서 , 임의로 
+				page += 1;
+				System.out.println("page number " + page);
+				if(page > 20) 
+				{
+					break;
+				}
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// getTagValue 메소드 인데 , 이 부분은 TagName을 가져옴으로써 nlList에 저장을 시키는 부분 
+	
+	private static String getTagValue(String tag, Element eElement) {
+		NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+		Node nValue = (Node) nlList.item(0);
+		if (nValue == null) {
+			return null;
+		}
+		return nValue.getNodeValue();
+	}
+}
